@@ -1,0 +1,59 @@
+Tcpstat Change Log
+------------------
+1.5:
+  2002/07/27: tcpstat has "zero padding" to print empty intervals after
+              last packet seen
+  2002/06/19: Fixed a bug which printed the wrong bandwidth when capturing
+              packets for a shorter amount of time than the interval
+  2002/06/15: Fixed an '-e' bug that printed empty intervals with no data
+  2002/05/12: Updated to automake-1.5 and autoconf-2.52
+  2002/01/18: Added the "-d" option to tcpprof to track source/dest data
+  2001/12/22: Ported to Mac OS X
+  2001/04/14: Added SIGUSR1 feature, which forces a statistic update
+  2001/03/15: Ported to Tru64 UNIX 4.0
+  2001/03/15: Ported to Tru64 UNIX 5.1
+  2001/02/11: Now works on AIX 4.3
+
+1.4:
+  2001/01/15: now reads stdin properly.  Reading snoop files from stdin is still broke
+  2000/10/20: fixed a bug in "-s" option. exited too early on some platforms
+  2000/09/13: now compiles under the native HPUX compiler
+
+1.3:
+  2000/08/08: Basic IPv6 capabilities, including the %V output statistic
+  2000/07/31: New %l "network load" statistic
+  2000/07/15: added "-e" option to not print empty intervals
+  2000/07/10: now can read snoop file format (from Sun)
+  2000/07/09: fixed a bug which prevented printing of arp headers
+  2000/06/21: fixed many packet printing bugs
+  2000/06/16: smarter linking.  Before math library was linked to all progs
+  2000/06/14: wrote new program, catpcap.  See src/README
+  2000/06/14: Handles Ethernet link types better
+  2000/06/10: Handles PPP link types better
+  2000/06/07: New src/tcpprof. Now works. Will move to own package soon...
+  2000/05/30: Handles SIGINT (^C) a lot better
+  2000/05/30: make now works completely with BSD make
+
+1.2:
+  2000/05/13: Now allows output on multiple file desc. (%number option)
+  2000/05/13: Implemented the -s option
+  2000/05/11: Added smarter bandwidth calculation.  Moved old to "dumb"
+  2000/05/11: Added option -F to flush stdout after printing each line
+  2000/05/08: Fixed a bug which ignored intervals of -1
+  2000/05/08: Removed negligible buffer overflow potential
+  2000/05/05: Now compiles under Solaris
+
+1.1:
+  2000/05/04: Bandwidth mode now properly includes the last interval
+  2000/05/03: Added new output stats (%A, %C, %I, %M, %m, %R, %r, %T, %U)
+  2000/05/03: Added IP variable support for NULL type link layers
+  2000/05/02: Fixed a bug which causes a SIGFPE in bandwidth mode
+  2000/05/02: Added support for BSD/OS (ethernet_stub.h)
+  2000/05/02: Improved libpcap detection in configure
+  2000/05/02: Improved buffer overflow prevention
+
+1.0:
+  2000/05/01 -	Initial public release
+  2000/04/27 -	Awww man, gotta write manpages and docs if i wanna release this!
+  2000/04/20 -	Renamed a bunch of options and output strings to make
+		room for future options.

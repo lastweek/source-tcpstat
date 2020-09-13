@@ -1,0 +1,184 @@
+dnl Process this file with autoconf to produce a configure script.
+dnl
+dnl $Id: configure.in,v 1.39 2002/07/27 00:50:46 pherman Exp $
+dnl
+
+AC_INIT(src/tcpstat.c)
+AM_INIT_AUTOMAKE(tcpstat, 1.5)
+AM_CONFIG_HEADER(include/config.h)
+
+dnl #########################
+dnl Set Global make Variables
+dnl #########################
+CFLAGS=${CFLAGS:-"-O"}
+
+dnl ###########################
+dnl First, setup my own options
+dnl ###########################
+AC_ARG_WITH(pcap-include,
+	[  --with-pcap-include=DIR pcap.h is in DIR])
+if test "x${with_pcap_include}" = x -o "x${with_pcap_include}" = xno
+then
+# Try to make an educated guess
+# Hacks for crazy Linux distributions.
+#  C'mon kids get it together, woncha? I mean, base distros go in /usr
+#  and everything else goes in /usr/local... sheesh.
+#   Redhat	- /usr/include/pcap
+#   SuSE	- /usr/include/nessus
+  for pdir in /usr/include/pcap /usr/include/nessus /usr/local/include /usr/local/include/pcap
+  do
+    if test -r ${pdir}/pcap.h
+    then CPPFLAGS="-I${pdir} "${CPPFLAGS}; break
+    fi
+  done
+else
+  CPPFLAGS=" -I${with_pcap_include} "${CPPFLAGS}
+fi
+
+AC_ARG_WITH(pcap-lib,
+	[  --with-pcap-lib=DIR     libpcap.a is in DIR])
+if test "x$with_pcap_lib" = x -o "x$with_pcap_lib" = xno
+then
+# Try to make an educated guess
+  for pdir in /usr/local/lib /opt/lib /vol/lib
+  do
+    if test -r ${pdir}/libpcap.a
+    then LDFLAGS="-L${pdir} "${LDFLAGS}; break
+    fi
+  done
+else
+  LDFLAGS=" -L${with_pcap_lib} "${LDFLAGS}
+fi
+
+AC_ARG_ENABLE(fdesc,
+	[  --disable-fdesc         do this if installed setuid])
+if test "x${enable_fdesc}" = xno
+then AC_DEFINE(NO_FILEDESC, 1, [ Disable the ability to write to arbitrary file descriptors. ])
+fi
+
+dnl ######################################
+dnl CHECK FOR VARIOUS OSES (Linux, etc...)
+dnl ######################################
+AC_MSG_CHECKING([to see if I can guess the OS to build for])
+my_build_os=${build_os:-`uname -s | tr 'A-Z' 'a-z'`}
+if test "x${my_build_os}" = x
+then AC_MSG_ERROR([Can't determine OS.  Broken uname?])
+else echo ${my_build_os}
+fi
+case $my_build_os in
+	aix*)		AC_DEFINE(AIX_STRANGENESS, 1, [ defined on AIX systems. ]) ;;
+	osf1*)		AC_DEFINE(TRU64_STRANGENESS, 1, [ defined on OSF systems. ]) ;;
+	linux*)		AC_DEFINE(_BSD_SOURCE, 1, [ defined usually on linux systems ] ) ;;
+	bsd/os*)	;;
+	freebsd*)	;;
+	sunos*)		;;
+esac
+
+dnl ###################
+dnl Checks for programs
+dnl ###################
+AC_PROG_CC
+AC_PROG_RANLIB
+
+
+dnl #######################
+dnl Checks for header files
+dnl #######################
+AC_HEADER_STDC
+AC_HEADER_SYS_WAIT
+AC_CHECK_HEADERS(sys/time.h sys/stat.h unistd.h strings.h fcntl.h netinet/ip6.h)
+
+dnl BSD/OS Seems to not have a good ethernet header, so we gotta wing it
+AC_CHECK_HEADERS(net/if.h net/ethernet.h netinet/if_ether.h net/ppp_defs.h)
+
+dnl #############################################################
+dnl Checks for typedefs, structures, and compiler characteristics
+dnl #############################################################
+AC_C_CONST
+AC_TYPE_SIZE_T
+AC_HEADER_TIME
+
+dnl ############################
+dnl Checks for library functions
+dnl ############################
+AC_CHECK_FUNCS(strtol strtoul ualarm perror inet_ntop)
+AC_CHECK_FUNCS(snprintf, , [
+echo "WARNING:  You don't seem to have snprintf() (Solaris 2.5.x?)"
+echo "          There may be a slight security problem without it."
+echo "          Probably not -- but you have been warned."
+])
+
+dnl math lib?
+MATHLIB=""
+AC_CHECK_LIB(m, sqrt, MATHLIB="-lm")
+
+dnl socket?  Solaris has it somewhere else.
+AC_CHECK_LIB(c, socket, [:], [
+ AC_CHECK_LIB(socket, socket, [
+  LIBS="-lsocket ${LIBS}"
+  ], []) ])
+
+dnl gethostbyaddr?  Solaris has it somewhere else.
+AC_CHECK_LIB(c, gethostbyaddr, [:], [
+ AC_CHECK_LIB(nsl, gethostbyaddr, [
+  LIBS="-lnsl ${LIBS}"
+  ], []) ])
+
+dnl getprotobynumber?  Solaris has it somewhere else.
+dnl hope the rest is also there (getnetbyname, getservbyport, etc.)
+AC_CHECK_LIB(c, getprotobynumber, [:], [
+ AC_CHECK_LIB(nsl, getprotobynumber, [
+  LIBS="-lnsl ${LIBS}"
+  ], []) ])
+
+dnl pcap lib?
+AC_CHECK_HEADERS(net/bpf.h)
+AC_CHECK_HEADERS(pcap.h, [:], [
+ AC_MSG_ERROR([
+  I couldn't find pcap.h.  Please install libpcap.
+  If you already have... then please rerun configure with the option
+    --with-pcap-include=DIR
+  with "DIR" being where pcap is found.])
+])
+
+AC_CHECK_LIB(pcap, pcap_major_version, LIBS="-lpcap ${LIBS}", [
+ AC_MSG_ERROR([
+  I couldn't find libpcap.  Please install libpcap.
+  If you already have... then please rerun configure with the option
+    --with-pcap-lib=DIR
+  with "DIR" being where libpcap is found.])
+])
+
+dnl look for dbopen for tcpprof
+TCPPROF=""
+LD_TCPPROF=""
+AC_CHECK_LIB(c, dbopen, [ TCPPROF=tcpprof ], [
+ AC_CHECK_LIB(db1, dbopen, [
+  TCPPROF=tcpprof
+  LD_TCPPROF="-ldb1"
+  AC_DEFINE(USE_DB1_LIBRARY, 1, [ Use the sleepycat DB library. ])
+  ], [
+  AC_MSG_WARN([
+
+  *** WARNING ***
+  I couldn't locate the Berkeley DB library.  The extra utility
+  "tcpprof" will not be built.  THIS IS OK!!!  "tcpstat" will
+  continue to be built as if this never happened.
+
+  If you wish to use the extra "tcpprof" program, please install
+  the Berkeley DB library from:
+      ftp://ftp.cs.berkeley.edu/ucb/4bsd/db.tar.gz
+    ])
+  ])
+])
+AC_SUBST(TCPPROF)
+AC_SUBST(LD_TCPPROF)
+AC_SUBST(MATHLIB)
+
+AC_CONFIG_FILES([
+Makefile
+doc/Makefile
+lib/Makefile
+src/Makefile
+])
+AC_OUTPUT

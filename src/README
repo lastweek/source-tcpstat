@@ -1,0 +1,15 @@
+There are some other (useful?) utilities in this directory:
+
+  catpcap	- Displays *everything* in a raw tcpdump(1) pcap file
+		  there is to show.  Useful for debuging.
+
+  packetdump	- Another dumping program, written to show the contents
+		  of packets better that tcpdump does.
+
+  tcpprof	- A nice program that gives a profile (protocols, ports,
+		  hosts, etc...) of the pcap file.  Nice indeed, and I
+		  think I will break off this program into it's own
+		  distribution someday...
+
+Paul Herman
+pherman@frenchfries.net

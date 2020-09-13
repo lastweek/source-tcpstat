@@ -1,0 +1,109 @@
+/* include/config.h.in.  Generated automatically from configure.in by autoheader.  */
+
+/* defined on AIX systems. */
+#undef AIX_STRANGENESS
+
+/* Define if you have the <fcntl.h> header file. */
+#undef HAVE_FCNTL_H
+
+/* Define if you have the `inet_ntop' function. */
+#undef HAVE_INET_NTOP
+
+/* Define if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define if you have the <netinet/if_ether.h> header file. */
+#undef HAVE_NETINET_IF_ETHER_H
+
+/* Define if you have the <netinet/ip6.h> header file. */
+#undef HAVE_NETINET_IP6_H
+
+/* Define if you have the <net/bpf.h> header file. */
+#undef HAVE_NET_BPF_H
+
+/* Define if you have the <net/ethernet.h> header file. */
+#undef HAVE_NET_ETHERNET_H
+
+/* Define if you have the <net/if.h> header file. */
+#undef HAVE_NET_IF_H
+
+/* Define if you have the <net/ppp_defs.h> header file. */
+#undef HAVE_NET_PPP_DEFS_H
+
+/* Define if you have the <pcap.h> header file. */
+#undef HAVE_PCAP_H
+
+/* Define if you have the `perror' function. */
+#undef HAVE_PERROR
+
+/* Define if you have the `snprintf' function. */
+#undef HAVE_SNPRINTF
+
+/* Define if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define if you have the `strtol' function. */
+#undef HAVE_STRTOL
+
+/* Define if you have the `strtoul' function. */
+#undef HAVE_STRTOUL
+
+/* Define if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define if you have the <sys/time.h> header file. */
+#undef HAVE_SYS_TIME_H
+
+/* Define if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define if you have <sys/wait.h> that is POSIX.1 compatible. */
+#undef HAVE_SYS_WAIT_H
+
+/* Define if you have the `ualarm' function. */
+#undef HAVE_UALARM
+
+/* Define if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* Disable the ability to write to arbitrary file descriptors. */
+#undef NO_FILEDESC
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* Define if you can safely include both <sys/time.h> and <time.h>. */
+#undef TIME_WITH_SYS_TIME
+
+/* defined on OSF systems. */
+#undef TRU64_STRANGENESS
+
+/* Use the sleepycat DB library. */
+#undef USE_DB1_LIBRARY
+
+/* Version number of package */
+#undef VERSION
+
+/* defined usually on linux systems */
+#undef _BSD_SOURCE
+
+/* Define to empty if `const' does not conform to ANSI C. */
+#undef const
+
+/* Define to `unsigned' if <sys/types.h> does not define. */
+#undef size_t

@@ -1,0 +1,16 @@
+Tcpstat authors
+---------------
+Paul Herman <pherman@frenchfries.net>
+     http://www.frenchfries.net/paul/tcpstat/
+
+
+Contributors
+------------
+The Author would like to thank the following people for thier contributions:
+
+Randy Hron		- Tested tcpstat development under Solaris 2.6, 7 and 8
+Tomasz Chmielecki	- Suggested '-F' option
+Matthew King		- Helped with snoop file compatibility.  Thanks Matt!
+Joe Thykattil		- Gave me the idea using fifos for multiple reads which
+			  helped me find the stdin bug fixed in 1.4
+--

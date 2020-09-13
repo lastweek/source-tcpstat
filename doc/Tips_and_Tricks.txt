@@ -1,0 +1,171 @@
+tcpstat v1.5 EXAMPLES OF USAGE
+------------------------------
+Paul Herman <pherman@frenchfries.net>
+Cologne, Germany.
+
+tcpstat has many options which may seem like a lot at first, but this is
+what makes tcpstat so configurable (yes, it is one of *those* kinds of
+programs.)  It's real power is seen when the options are combined.  So
+first:
+
+
+1. BASIC USAGE
+   -----------
+To simply get the basic garden variety statistics every 5 seconds, try:
+
+ tcpstat -i fxp0
+ tcpstat -r file.dump
+
+The first one gathers its data from the "fxp0" interface (can be replaced
+by "eth0" if you use Linux, for example), and the second line does the
+same thing, but gets its data from a file.  These types of files can be
+generated and saved using tcpdump(1).
+
+
+
+2. OK, GOT THAT, BUT WHILE MONITORING AN
+   INTERFACE, TCPSTAT RUNS FOREVER. HOW DO I STOP IT?
+   --------------------------------------------------
+One simple way is "Control-C" (or sending it a KILL signal...)  However,
+sometimes admins like to run tcpstat for a long time unattended in the
+background.  The solution in this case is to simply tell it how many
+seconds it should run before quitting.
+
+For example, you want to have tcpstat listen to eth0 for 2 Hours, and
+write statistics in a file every minute.  2 Hours = 7200 seconds, and 1
+minute is 60 seconds, so we just enter:
+
+ tcpstat -i eth0 -s 7200 60 > output.file.txt
+
+After 2 hours, all the statistics will be in the "output.file.txt" file.
+By the way, the -s option has no effect when reading the data from a file,
+of course.
+
+
+
+2. OBSERVING TRAFFIC ONLY FOR CERTAIN PORTS
+   ----------------------------------------
+If you just want to get statistics from packets to or from certain ports,
+try:
+
+ tcpstat -f "port http" -i fxp0
+ tcpstat -f "port (http or smtp)" -i fxp0
+
+The first one shows statistics only for http traffic, while the second
+command shows statistics for mail and web traffic combined.  In fact, the
+filter option (-f) is very very cool indeed.  It can select certain hosts,
+networks, IP protocols, packet length, and even IP flags like SYN, FIN,
+ACK, etc.  See the man page for tcpdump(1) for information on the syntax
+of the -f option.
+
+
+
+3. WHAT KIND OF STATISTICS ARE AVAILABLE?
+   --------------------------------------
+Quite a few.  The man page gives a complete list of all the output options
+(these are the "%" thingies.)  Let's take a look at a few.
+
+ tcpstat -o "Time: %r\tmin=%m\tmax=%M\n"
+ tcpstat -o "Time: %r\ttcp=%T\tudp=%U\ticmp=%C\n"
+
+First of all, you might ask, "what are all these '\' things?".  This is
+standard notation for special output characters.  For example, every "\t"
+is interpreted as a "tab" character (good for spacing), and each "\n" is a
+new-line character.  It is usually a good idea to have a "\n" at the end,
+otherwise all your lines will run together.  So back to the two examples
+from above.
+
+The first example first displays a time stamp (the time in the middle of
+the interval), then prints the minimum and maximum size of all packets in
+that interval.  It would look something like:
+
+  Time: 2.500000  min=88  max=88
+  Time: 7.500000  min=76  max=88
+  Time: 12.500000 min=48  max=384
+  Time: 17.500000 min=44  max=436
+  Time: 22.500000 min=88  max=88
+
+The second example once again displays the time stamp for the interval,
+and then reports how many TCP, UDP, and ICMP packets there were in each
+interval.  It would look something like:
+
+  Time: 2.500000  tcp=0   udp=0   icmp=9
+  Time: 7.500000  tcp=0   udp=1   icmp=10
+  Time: 12.500000 tcp=1   udp=14  icmp=9
+  Time: 17.500000 tcp=5   udp=3   icmp=9
+  Time: 22.500000 tcp=0   udp=0   icmp=8
+
+Not surprising to see, that these two came from the same file.  Looking at
+the first interval we see right away that there were only same sized ICMP
+packets (in this case, they were just pings to my host.)
+
+
+
+4. THE OTHER MODES OF OPERATION
+   ----------------------------
+tcpstat offers two other useful modes of operation:  "Accounting Mode",
+and "Bandwidth Mode."  Say you have a 56k modem and you just recorded all
+of your network traffic with tcpdump into a "dump.file" file.
+
+ tcpstat -r dump.file -b 57600
+ tcpstat -r dump.file -a
+
+The first command will tell you exactly how often your modem was "maxed
+out" (it is possible to achieve a faster baud rate that 56k with hardware
+compression.)  The second command will display traffic estimates based on
+this small sample, if you were continuously online for example.
+
+These two commands are also useful for ISPs to decide if current lines are
+adequate to handle current traffic, and to estimate how much traffic a
+customer will pull each day, month, etc.  Of course, the larger the
+sample, the more accurate your results.
+
+
+
+5. WRITING DIFFERENT STATISTICS TO MULTIPLE FILES
+   ----------------------------------------------
+Starting in version 1.2 it is possible to write multiple statistics to
+multiple files with just one tcpstat command.  Suppose you want daily
+plots of nice looking graphs of TCP, UDP, and ICMP statistics on your web
+page of your "vr0" interface.  First, you generate three separate files
+which a graphing program like "gnuplot" can easily read and put something
+like this in a crontab file:
+
+  tcpstat -i vr0 -s 86400 -o "%s\t%T\n%3%s\t%U\n%4%s\t%C\n" \
+	1>/tmp/stats/tcp.xy 3>/tmp/stats/udp.xy 4>/tmp/stats/icmp.xy
+
+Then you can run your favorite gnuplot script on these files.  So what the
+heck did that -o option do?  Starting from left to right:
+
+  %s	- print a timestamp on stdout (default in the beginning)
+  \t	- follow timestamp with a tab character to separate data
+  %T	- print the number of TCP packets for this interval
+  \n	- ...followed by a newline
+  %3	- tell tcpstat that the following data is outputed to filedesc 3
+  %s\t	- once again, a timestamp followed by tab (like above) on filedesc 3
+  %U	- print on filedesc 3 the number of UDP packets for this interval.
+  \n	- newline on filedesc 3
+  %4	- change to filedesc 4
+  %s\t	- .... etc.
+
+
+6. RUNNING MULTIPLE TCPSTATS FROM ONE TCPDUMP
+   ------------------------------------------
+Suppose you want many different kinds of tcpstat statistics, but you don't
+want to have more than one BPF filter in the kernel, which robs you of
+kernel/network resources.  A good example would be, you want different
+tcpstat statistics for different multicast groups.  Here's the trick:  
+Since tcpstat can read it's tcpdump file from stdin, you do something like
+the following:
+
+   mkfifo dumpfile.1 dumpfile.2 dumpfile.3      ## as many as you need
+   tcpdump -l -w - | tee dumpfile.1 | tee dumpfile.2 > dumpfile.3
+
+This way, only one BPF filter is open in the kernel.  Now, you go to other
+consoles:
+
+  tcpstat -r dumpfile.1 -f "filter expr 1"
+  tcpstat -r dumpfile.2 -f "filter expr 2"
+  tcpstat -r dumpfile.3 -f "filter expr 3"
+
+Thanks to Joe Thykattil for helping me work out this idea.

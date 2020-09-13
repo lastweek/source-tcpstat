@@ -1,0 +1,202 @@
+.\" Copyright (c) 2001 Paul Herman
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\" $Id: tcpprof.1,v 1.4 2002/07/25 16:09:08 pherman Exp $
+.\" ---
+.\"
+.Dd December 22, 2001
+.Dt TCPPROF 1
+.Os
+.Sh NAME
+.Nm tcpprof
+.Nd report profile of network traffic
+.Sh SYNOPSIS
+.Nm 
+.Op Fl ?hdnpR
+.Op Fl f Ar filter expr
+.Op Fl i Ar interface
+.Op Fl P Ar port
+.Op Fl r Ar filename
+.Op Fl s Ar seconds
+.Op Fl S Ar letters
+.Op Fl t Ar lines
+.Sh DESCRIPTION
+.Nm
+reports a profile of network traffic by ranking it by link type, ip protocol,
+TCP/UDP port, ip address, or network address.
+.Pp
+Network information is collected either by reading data from
+.Ar filename ,
+or by directly monitoring the network interface
+.Ar interface .
+The default action for
+.Nm
+is to automatically search for an appropriate
+interface, and to generate a profile before it exits.
+.Pp
+When reading data from
+.Ar filename ,
+.Nm
+will display the profile and exit immediately after the
+entire file has been processed.  When collecting data from
+.Ar interface ,
+.Nm
+will keep running unless the
+.Fl s
+option had been specified.
+.Pp
+.Sh OPTIONS
+The options are as follows:
+.Bl -tag -width Fl
+.It Fl f Ar filter expr
+Filter the packets according the rules given by
+.Ar filter expr .
+For the syntax of these rules, see
+.Xr tcpdump 1 .
+The argument must be quoted if it contains spaces in order to separate it
+from other options.
+.It Fl h , Fl ?
+Display version and a brief help message.
+.It Fl d
+.Nm
+will track the source and destination information separately,
+where applicable, and identify source data with a ">" and
+destination data with "<".  For example, a "http <" statistic
+signifies all traffic with destination port 80 (http). This option
+only applies to port, host and network statistics.
+.It Fl i Ar interface
+Do a live capture (rather than read from a file) on the interface
+.Ar interface
+given on the command line.  If
+.Ar interface
+is "auto" then
+.Nm
+tries to find an appropriate one by itself.
+.It Fl P Ar port
+This tells
+.Nm
+to ignore TCP and UDP ports greater than or equal to
+.Ar port 
+when displaying port statistics.
+This is not the same as filtering these port numbers out
+of the data set.  This way, packets with i.e. the source port above
+.Ar port
+and the destination port below
+.Ar port
+will be able to still count the lower port number as a statistic.
+In addition, this doesn't affect the other statistic types (link,
+protocol, etc.)
+.It Fl p
+Set the interface into non-promiscuous mode (promiscuous
+is the default) when doing live captures.
+.It Fl r Ar filename
+Read all data from
+.Ar filename ,
+which may be a regular file, a named pipe or "-" to read it's data from
+standard input. Acceptable file formats include pcap
+.Xr (tcpdump 1
+files) and "snoop" format files.
+.Ar filename
+is usually a file created by the
+.Xr tcpdump 1
+command using the "-w" option.
+.It Fl S Ar letters
+Tells
+.Nm
+which statistics to display.
+.Ar letters
+must be a string of one or more of the following letters:
+.Bl -tag -width %%%%
+.It l
+show stats about the link layer
+.It i
+show stats about all ip protocols
+.It p
+show stats about TCP/UDP ports
+.It h
+show stats about hosts/ip addresses
+.It n
+show stats about network addresses
+.It a
+a synonym for "liphn"
+.El
+.It Fl s Ar seconds
+When monitoring an interface,
+.Nm
+runs for only 
+.Ar seconds 
+seconds, and then quits.  Has no effect when reading data from a file.
+.It Fl t Ar lines
+When printing a profile of the data,
+.Nm
+will display a maximum of
+.Ar lines
+lines for each statistic.
+.El
+.Sh SIGNALS
+Upon receiving a SIGINT,
+.Nm
+will print any remaining statistics, and then exit.
+.Sh FILES
+.Bl -tag -width /dev/bpfXXX -compact
+.It Pa /dev/bpf Ns Sy n
+the packet filter device
+.El
+.Sh EXAMPLES
+.Dl tcpprof -i fxp0 -S a
+.Pp
+Displays a complete profile of network data 
+passing through the fxp0 network interface, after the user enters
+^C (control C).
+.Pp
+.Dl tcpprof -r file.dump -S a
+.Pp
+Displays a complete profile of network data from the
+.Xr tcpdump 1
+generated file "file.dump".
+.Pp
+.Sh SEE ALSO
+.Xr tcpdump 1 ,
+.Xr pcap 3 ,
+.Xr bpf 4
+.Re
+.Sh HISTORY
+.Nm
+was first written along side tcpstat in Winter 1998 using FreeBSD 3.0,
+and then finaly retrofited for Linux in Spring 2000.  It became installed
+along with tcpstat since version 1.5.
+.Sh AUTHORS
+.An Paul Herman Aq pherman@frenchfries.net
+.br
+Cologne, Germany.
+.Pp
+Please send all bug reports to this address.
+.Sh BUGS
+Not tested with link types other than Ethernet, PPP, and "None" types.  
+.Pp
+There may be problems reading non-IPv4 packets across platforms when
+reading null type link layers.  This is due to a lack of a standardized
+packet type descriptor in libpcap for this link type.
+.Pp
+Snoop file formats cannot be read from stdin or named pipes.

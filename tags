@@ -1,0 +1,336 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ACTION_ACCOUNT	./src/tcpstat.c	/^	ACTION_INTERVAL, ACTION_BANDWIDTH, ACTION_ACCOUNT, ACTION_LOAD$/;"	e	enum:__anon4	file:
+ACTION_BANDWIDTH	./src/tcpstat.c	/^	ACTION_INTERVAL, ACTION_BANDWIDTH, ACTION_ACCOUNT, ACTION_LOAD$/;"	e	enum:__anon4	file:
+ACTION_INTERVAL	./src/tcpstat.c	/^	ACTION_INTERVAL, ACTION_BANDWIDTH, ACTION_ACCOUNT, ACTION_LOAD$/;"	e	enum:__anon4	file:
+ACTION_LOAD	./src/tcpstat.c	/^	ACTION_INTERVAL, ACTION_BANDWIDTH, ACTION_ACCOUNT, ACTION_LOAD$/;"	e	enum:__anon4	file:
+BUF_SIZ	./include/tcpstat.h	/^#define BUF_SIZ	/;"	d
+DEFAULT_FORMAT	./src/tcpstat.c	/^#define DEFAULT_FORMAT	/;"	d	file:
+DEFAULT_INTERVAL	./src/tcpstat.c	/^#define DEFAULT_INTERVAL	/;"	d	file:
+Double	./include/tcpstat.h	/^#define Double	/;"	d
+Double	./src/tcpstat.c	/^#define Double	/;"	d	file:
+ETHERMIN	./include/ethernet_stub.h	/^#define	ETHERMIN	/;"	d
+ETHERMTU	./include/ethernet_stub.h	/^#define	ETHERMTU	/;"	d
+ETHERTYPE_AARP	./include/tcpstat.h	/^# define ETHERTYPE_AARP /;"	d
+ETHERTYPE_ARP	./include/ethernet_stub.h	/^#define ETHERTYPE_ARP	/;"	d
+ETHERTYPE_AT	./include/tcpstat.h	/^# define ETHERTYPE_AT /;"	d
+ETHERTYPE_IP	./include/ethernet_stub.h	/^#define	ETHERTYPE_IP	/;"	d
+ETHERTYPE_IPV6	./include/ethernet_stub.h	/^#define	ETHERTYPE_IPV6	/;"	d
+ETHERTYPE_IPV6	./include/tcpstat.h	/^# define ETHERTYPE_IPV6 /;"	d
+ETHERTYPE_IPX	./include/tcpstat.h	/^# define ETHERTYPE_IPX	/;"	d
+ETHERTYPE_LOOPBACK	./include/ethernet_stub.h	/^#define	ETHERTYPE_LOOPBACK	/;"	d
+ETHERTYPE_NTRAILER	./include/ethernet_stub.h	/^#define	ETHERTYPE_NTRAILER	/;"	d
+ETHERTYPE_PUP	./include/ethernet_stub.h	/^#define	ETHERTYPE_PUP	/;"	d
+ETHERTYPE_REVARP	./include/ethernet_stub.h	/^#define ETHERTYPE_REVARP	/;"	d
+ETHERTYPE_TRAIL	./include/ethernet_stub.h	/^#define	ETHERTYPE_TRAIL	/;"	d
+ETHERTYPE_VLAN	./include/ethernet_stub.h	/^#define	ETHERTYPE_VLAN	/;"	d
+ETHER_ADDR_LEN	./include/ethernet_stub.h	/^#define	ETHER_ADDR_LEN	/;"	d
+ETHER_CRC_LEN	./include/ethernet_stub.h	/^#define	ETHER_CRC_LEN	/;"	d
+ETHER_HDR_LEN	./include/ethernet_stub.h	/^#define	ETHER_HDR_LEN	/;"	d
+ETHER_HDR_LEN	./include/tcpstat.h	/^# define ETHER_HDR_LEN	/;"	d
+ETHER_IS_VALID_LEN	./include/ethernet_stub.h	/^#define	ETHER_IS_VALID_LEN(/;"	d
+ETHER_MAX_LEN	./include/ethernet_stub.h	/^#define	ETHER_MAX_LEN	/;"	d
+ETHER_MIN_LEN	./include/ethernet_stub.h	/^#define	ETHER_MIN_LEN	/;"	d
+ETHER_TYPE_LEN	./include/ethernet_stub.h	/^#define	ETHER_TYPE_LEN	/;"	d
+FIRST_COLUMN_WIDTH	./src/stats.c	/^#define FIRST_COLUMN_WIDTH	/;"	d	file:
+GENERIC_LINK_IP	./include/tcpstat.h	/^#define GENERIC_LINK_IP	/;"	d
+GENERIC_LINK_IP6	./include/tcpstat.h	/^#define GENERIC_LINK_IP6	/;"	d
+GENERIC_LINK_OTHER	./include/tcpstat.h	/^#define GENERIC_LINK_OTHER	/;"	d
+GET_TCPD_COUNT_LINKSIZE	./include/tcpstat.h	/^#define GET_TCPD_COUNT_LINKSIZE	/;"	d
+GET_TCPD_DO_LIVE	./include/tcpstat.h	/^#define GET_TCPD_DO_LIVE	/;"	d
+GET_TCPD_DO_LIVE_PROMISC	./include/tcpstat.h	/^#define GET_TCPD_DO_LIVE_PROMISC	/;"	d
+GIG	./src/tcpstat.c	/^#define GIG	/;"	d	file:
+INET6	./include/tcpstat.h	/^#  define INET6	/;"	d
+KIL	./src/tcpstat.c	/^#define KIL	/;"	d	file:
+LINK_ETHERNET	./include/tcpstat.h	/^#define LINK_ETHERNET	/;"	d
+LINK_ETHERNET_AARP	./include/tcpstat.h	/^#define LINK_ETHERNET_AARP	/;"	d
+LINK_ETHERNET_ARP	./include/tcpstat.h	/^#define LINK_ETHERNET_ARP	/;"	d
+LINK_ETHERNET_AT	./include/tcpstat.h	/^#define LINK_ETHERNET_AT	/;"	d
+LINK_ETHERNET_IP	./include/tcpstat.h	/^#define LINK_ETHERNET_IP	/;"	d
+LINK_ETHERNET_IP6	./include/tcpstat.h	/^#define LINK_ETHERNET_IP6	/;"	d
+LINK_ETHERNET_IPX	./include/tcpstat.h	/^#define LINK_ETHERNET_IPX	/;"	d
+LINK_ETHERNET_OTHER	./include/tcpstat.h	/^#define LINK_ETHERNET_OTHER	/;"	d
+LINK_ETHERNET_REVARP	./include/tcpstat.h	/^#define LINK_ETHERNET_REVARP	/;"	d
+LINK_NONE	./include/tcpstat.h	/^#define LINK_NONE	/;"	d
+LINK_NONE_IP	./include/tcpstat.h	/^#define LINK_NONE_IP	/;"	d
+LINK_NONE_IP6	./include/tcpstat.h	/^#define LINK_NONE_IP6	/;"	d
+LINK_NONE_OTHER	./include/tcpstat.h	/^#define LINK_NONE_OTHER	/;"	d
+LINK_PPP	./include/tcpstat.h	/^#define LINK_PPP	/;"	d
+LINK_PPP_CCP	./include/tcpstat.h	/^#define LINK_PPP_CCP	/;"	d
+LINK_PPP_CHAP	./include/tcpstat.h	/^#define LINK_PPP_CHAP	/;"	d
+LINK_PPP_IP	./include/tcpstat.h	/^#define LINK_PPP_IP	/;"	d
+LINK_PPP_IP6	./include/tcpstat.h	/^#define LINK_PPP_IP6	/;"	d
+LINK_PPP_IPCP	./include/tcpstat.h	/^#define LINK_PPP_IPCP	/;"	d
+LINK_PPP_IPCP6	./include/tcpstat.h	/^#define LINK_PPP_IPCP6	/;"	d
+LINK_PPP_LCP	./include/tcpstat.h	/^#define LINK_PPP_LCP	/;"	d
+LINK_PPP_OTHER	./include/tcpstat.h	/^#define LINK_PPP_OTHER	/;"	d
+LINK_PPP_PAP	./include/tcpstat.h	/^#define LINK_PPP_PAP	/;"	d
+MAGIC_SIZE	./lib/process.c	/^#define MAGIC_SIZE	/;"	d	file:
+MAX_STRCPY	./lib/utils.c	/^#define MAX_STRCPY	/;"	d	file:
+MEG	./src/tcpstat.c	/^#define MEG	/;"	d	file:
+O_RDONLY	./include/tcpstat.h	/^# define O_RDONLY /;"	d
+PACKETDUMP_PACKETDUMP_H	./include/packetdump.h	/^#define PACKETDUMP_PACKETDUMP_H$/;"	d
+PAK_SIZ	./include/tcpstat.h	/^#define PAK_SIZ	/;"	d
+PCAP_FILE_MAGIC	./include/tcpstat.h	/^#define PCAP_FILE_MAGIC	/;"	d
+PCAP_FILE_MAGIC_RH	./include/tcpstat.h	/^#define PCAP_FILE_MAGIC_RH	/;"	d
+PPP_HDRLEN	./include/tcpstat.h	/^# define PPP_HDRLEN	/;"	d
+PP_SHOW_BASICINFO	./include/packetdump.h	/^#define	PP_SHOW_BASICINFO	/;"	d
+PP_SHOW_ICMPHEADER	./include/packetdump.h	/^#define	PP_SHOW_ICMPHEADER	/;"	d
+PP_SHOW_IPHEADER	./include/packetdump.h	/^#define	PP_SHOW_IPHEADER	/;"	d
+PP_SHOW_LINKLAYER	./include/packetdump.h	/^#define	PP_SHOW_LINKLAYER	/;"	d
+PP_SHOW_PACKETCONTENT	./include/packetdump.h	/^#define	PP_SHOW_PACKETCONTENT	/;"	d
+PP_SHOW_TCPHEADER	./include/packetdump.h	/^#define	PP_SHOW_TCPHEADER	/;"	d
+PP_SHOW_UDPHEADER	./include/packetdump.h	/^#define	PP_SHOW_UDPHEADER	/;"	d
+PRINTVAL	./src/tcpstat.c	/^#define PRINTVAL(/;"	d	file:
+SECONDS_STEP	./lib/process.c	/^#define SECONDS_STEP	/;"	d	file:
+SETUID_WARNING	./src/tcpstat.c	/^#define SETUID_WARNING	/;"	d	file:
+SHOW_HIGH_BIT	./src/catpcap.c	/^#define SHOW_HIGH_BIT	/;"	d	file:
+SNAPLEN	./lib/process.c	/^#define SNAPLEN	/;"	d	file:
+SNOOP_DL_ETHER	./include/snoop.h	/^#define SNOOP_DL_ETHER	/;"	d
+SNOOP_DL_FDDI	./include/snoop.h	/^#define SNOOP_DL_FDDI	/;"	d
+SNOOP_FILE_MAGIC	./include/tcpstat.h	/^#define SNOOP_FILE_MAGIC	/;"	d
+SNOOP_FILE_MAGIC_2	./include/tcpstat.h	/^#define SNOOP_FILE_MAGIC_2	/;"	d
+STEVENS_API	./include/tcpstat.h	/^#  define STEVENS_API	/;"	d
+TCPPROF_TCPPROF_H	./include/tcpprof.h	/^#define TCPPROF_TCPPROF_H$/;"	d
+TCPSTAT_SNOOP_H	./include/snoop.h	/^#define TCPSTAT_SNOOP_H$/;"	d
+TCPSTAT_TCPSTAT_H	./include/tcpstat.h	/^#define TCPSTAT_TCPSTAT_H$/;"	d
+TYPE_ALL	./include/tcpprof.h	/^#define TYPE_ALL	/;"	d
+TYPE_HOST	./include/tcpprof.h	/^#define TYPE_HOST	/;"	d
+TYPE_IP_PROTO	./include/tcpprof.h	/^#define TYPE_IP_PROTO	/;"	d
+TYPE_LINK	./include/tcpprof.h	/^#define TYPE_LINK	/;"	d
+TYPE_NET	./include/tcpprof.h	/^#define TYPE_NET	/;"	d
+TYPE_PORT	./include/tcpprof.h	/^#define TYPE_PORT	/;"	d
+USAGE	./src/catpcap.c	/^#define USAGE /;"	d	file:
+USAGE	./src/dump.c	/^#define USAGE /;"	d	file:
+USAGE	./src/tcpprof.c	/^#define USAGE /;"	d	file:
+USAGE	./src/tcpstat.c	/^#define USAGE /;"	d	file:
+Usage	./src/catpcap.c	/^int Usage(int r, char *prog) {$/;"	f
+Usage	./src/dump.c	/^int Usage(int r, char *prog) {$/;"	f
+Usage	./src/tcpprof.c	/^int Usage(int r, char *prog) {$/;"	f
+Usage	./src/tcpstat.c	/^int Usage(int r, char *prog) {$/;"	f
+_BSD_SOURCE	./include/tcpstat.h	/^# define _BSD_SOURCE$/;"	d
+_ETHERNET_STUB_H_	./include/ethernet_stub.h	/^#define _ETHERNET_STUB_H_$/;"	d
+ack	./lib/tcpseq.c	/^	u_int			ack;$/;"	m	struct:tcpseq_hash	file:
+action	./src/tcpstat.c	/^char action			= ACTION_INTERVAL;$/;"	v
+add_entry	./src/stats.c	/^int add_entry(data_base *dbp, stkey_t *key, stat_unit *su) {$/;"	f
+add_packet	./src/stats.c	/^void add_packet(data_base *dbp, stkey_t *key, packet_data *pd) {$/;"	f
+addr	./lib/tcpseq.c	/^	struct tcpseq_ha	addr;$/;"	m	struct:tcpseq_hash	typeref:struct:tcpseq_hash::tcpseq_ha	file:
+args	./lib/process.c	/^	void	**args;$/;"	m	struct:hook_and_sinker	file:
+arp	./include/tcpstat.h	/^		struct arphdr		arp;$/;"	m	union:packet_data::__anon3	typeref:struct:packet_data::__anon3::arphdr
+arp	./src/tcpstat.c	/^		int		arp;$/;"	m	struct:statistics::__anon6	file:
+bandwidth	./src/tcpstat.c	/^Double	bandwidth		= 0.0;$/;"	v
+blen	./include/snoop.h	/^	u_int	blen;$/;"	m	struct:snoop_packet_header
+body	./include/tcpstat.h	/^	} body;$/;"	m	struct:ip6_packet	typeref:union:ip6_packet::__anon2
+body	./include/tcpstat.h	/^	} body;$/;"	m	struct:ip_packet	typeref:union:ip_packet::__anon1
+buffer_len	./include/tcpstat.h	/^	u_int			buffer_len;$/;"	m	struct:packet_data
+bytes	./src/stats.c	/^	u_quad_t bytes;$/;"	m	struct:stat_unit	file:
+bytes_compare	./src/stats.c	/^int bytes_compare(const void *h1, const void *h2) {$/;"	f
+capture_seconds	./src/tcpstat.c	/^Double	capture_seconds		= -1.0;	\/* -1.0 means infinite *\/$/;"	v
+catch_signal	./src/tcpstat.c	/^void catch_signal(int a) {$/;"	f
+char_conv	./src/catpcap.c	/^char char_conv(char c) {$/;"	f
+closed_connections	./lib/tcpseq.c	/^	u_int		closed_connections;	\/* doesn't include full *\/$/;"	m	struct:tcpseq_stats	file:
+compare_keys	./src/stats.c	/^int compare_keys(const DBT *d1, const DBT *d2) {$/;"	f
+count	./include/tcpprof.h	/^	u_int		count;$/;"	m	struct:stat_root
+count	./src/tcpstat.c	/^		} count;$/;"	m	struct:statistics	typeref:struct:statistics::__anon6	file:
+count_1bits	./lib/utils.c	/^u_char count_1bits(u_int x) {$/;"	f
+data	./include/tcpstat.h	/^	} data;$/;"	m	struct:packet_data	typeref:union:packet_data::__anon3
+data_base	./src/stats.c	/^typedef struct data_base {$/;"	s	file:
+data_base	./src/stats.c	/^} data_base;$/;"	t	typeref:struct:data_base	file:
+db	./src/stats.c	/^	DB	*db;$/;"	m	struct:data_base	file:
+dbopen	./configure	/^dbopen ();$/;"	f
+dbs	./src/stats.c	/^data_base	*dbs;$/;"	v
+direction	./src/stats.c	/^	char	direction;$/;"	m	struct:stkey	file:
+do_the_printing	./src/tcpstat.c	/^int do_the_printing(statistics *sp, Double elapsed, Double ts) {$/;"	f
+dst	./lib/tcpseq.c	/^	struct in_addr	dst;$/;"	m	struct:tcpseq_ha	typeref:struct:tcpseq_ha::in_addr	file:
+empty_intervals	./src/tcpstat.c	/^int	empty_intervals		= 1;	\/* by default print empty intervals *\/$/;"	v
+error	./src/catpcap.c	/^void error(char *s) {$/;"	f
+error	./src/dump.c	/^void error(char *s) {$/;"	f
+error	./src/tcpprof.c	/^void error(char *s) {$/;"	f
+error	./src/tcpstat.c	/^void error(char *s) {$/;"	f
+ether	./include/tcpstat.h	/^	struct ether_header	ether;$/;"	m	struct:packet_data	typeref:struct:packet_data::ether_header
+ether_addr	./include/ethernet_stub.h	/^struct	ether_addr {$/;"	s
+ether_dhost	./include/ethernet_stub.h	/^	u_char	ether_dhost[ETHER_ADDR_LEN];$/;"	m	struct:ether_header
+ether_header	./include/ethernet_stub.h	/^struct	ether_header {$/;"	s
+ether_shost	./include/ethernet_stub.h	/^	u_char	ether_shost[ETHER_ADDR_LEN];$/;"	m	struct:ether_header
+ether_type	./include/ethernet_stub.h	/^	u_short	ether_type;$/;"	m	struct:ether_header
+extract_entries	./src/stats.c	/^u_int extract_entries(data_base *dbp, stat_info **sia) {$/;"	f
+filterexpr	./src/catpcap.c	/^char filterexpr[BUF_SIZ]	= "";$/;"	v
+filterexpr	./src/dump.c	/^char filterexpr[BUF_SIZ]	= "";$/;"	v
+filterexpr	./src/tcpprof.c	/^char	filterexpr[BUF_SIZ]	= "";$/;"	v
+filterexpr	./src/tcpstat.c	/^char *filterexpr = NULL;$/;"	v
+find_entry	./src/stats.c	/^int find_entry(data_base *dbp, stkey_t *key, stat_unit *su) {$/;"	f
+flush_stdout	./src/tcpstat.c	/^int	flush_stdout		= 0;	\/* flushes all fds when set *\/$/;"	v
+full_connections	./lib/tcpseq.c	/^	u_int		full_connections;	\/* opened AND closed *\/$/;"	m	struct:tcpseq_stats	file:
+get_data_from_packet	./src/stats.c	/^int get_data_from_packet(stkey_t *key, u_int t, packet_data *p, char source) {$/;"	f
+get_dump_data	./lib/process.c	/^int get_dump_data(char *fname, char *filter, int flags,$/;"	f
+get_dumpfile_info	./lib/process.c	/^int get_dumpfile_info(char *fname, u_int *df_type) {$/;"	f
+get_ip_proto	./lib/utils.c	/^unsigned char get_ip_proto(packet_data *p) {$/;"	f
+get_pcap_data	./lib/process.c	/^int get_pcap_data(char *fname, char *filter, int flags,$/;"	f
+get_snoop_data	./lib/process.c	/^int get_snoop_data(char *fname, char *filter, int flags,$/;"	f
+get_tcp_flags	./src/dump.c	/^int	get_tcp_flags		= 0;$/;"	v
+get_tcp_flags	./src/tcpstat.c	/^int	get_tcp_flags		= 0;	\/* flags to pass to get_dump_data *\/$/;"	v
+gethostbyaddr	./configure	/^gethostbyaddr ();$/;"	f
+getprotobynumber	./configure	/^getprotobynumber ();$/;"	f
+global	./src/tcpstat.c	/^		} global;$/;"	m	struct:statistics	typeref:struct:statistics::__anon5	file:
+gstr	./lib/print_packet.c	/^char gstr[8192];$/;"	v
+hash	./include/tcpprof.h	/^	struct stat_unit **hash;$/;"	m	struct:stat_root	typeref:struct:stat_root::stat_unit
+hash_first	./lib/tcpseq.c	/^struct tcpseq_hash	hash_first;$/;"	v	typeref:struct:tcpseq_hash
+hdr	./include/tcpstat.h	/^	struct ip	hdr;$/;"	m	struct:ip_packet	typeref:struct:ip_packet::ip
+hdr	./include/tcpstat.h	/^	struct ip6_hdr	hdr;$/;"	m	struct:ip6_packet	typeref:struct:ip6_packet::ip6_hdr
+hook	./lib/process.c	/^	void 	(*hook)(packet_data *, void **);$/;"	m	struct:hook_and_sinker	file:
+hook_and_sinker	./lib/process.c	/^struct	hook_and_sinker {$/;"	s	file:
+icmp	./include/tcpstat.h	/^		struct icmp	icmp;$/;"	m	union:ip_packet::__anon1	typeref:struct:ip_packet::__anon1::icmp
+icmp	./src/tcpstat.c	/^		int		icmp;$/;"	m	struct:statistics::__anon6	file:
+icmp6hdr	./include/tcpstat.h	/^		struct icmp6_hdr icmp6hdr;$/;"	m	union:ip6_packet::__anon2	typeref:struct:ip6_packet::__anon2::icmp6_hdr
+inet_ntop	./lib/utils.c	/^char *inet_ntop(int af, void *src, char *dst, int n) {$/;"	f
+interval	./src/tcpstat.c	/^Double	interval;$/;"	v
+ip	./include/tcpstat.h	/^		struct ip_packet	ip;$/;"	m	union:packet_data::__anon3	typeref:struct:packet_data::__anon3::ip_packet
+ip	./src/tcpstat.c	/^		int		ip;$/;"	m	struct:statistics::__anon6	file:
+ip6	./include/tcpstat.h	/^		struct ip6_packet	ip6;$/;"	m	union:packet_data::__anon3	typeref:struct:packet_data::__anon3::ip6_packet
+ip6	./src/tcpstat.c	/^		int		ip6;$/;"	m	struct:statistics::__anon6	file:
+ip6_hdr	./include/tcpstat.h	/^#  define ip6_hdr	/;"	d
+ip6_packet	./include/tcpstat.h	/^typedef struct ip6_packet {$/;"	s
+ip6_packet	./include/tcpstat.h	/^} ip6_packet;$/;"	t	typeref:struct:ip6_packet
+ip6_vfc	./include/tcpstat.h	/^#   define ip6_vfc /;"	d
+ip_packet	./include/tcpstat.h	/^typedef struct ip_packet {$/;"	s
+ip_packet	./include/tcpstat.h	/^} ip_packet;$/;"	t	typeref:struct:ip_packet
+is_ethernetarp_packet	./lib/utils.c	/^int is_ethernetarp_packet(packet_data *p) {$/;"	f
+is_ip6_packet	./lib/utils.c	/^int is_ip6_packet(packet_data *p) {$/;"	f
+is_ip_icmp_packet	./lib/utils.c	/^int is_ip_icmp_packet(packet_data *p) {$/;"	f
+is_ip_packet	./lib/utils.c	/^int is_ip_packet(packet_data *p) {$/;"	f
+is_ip_tcp_packet	./lib/utils.c	/^int is_ip_tcp_packet(packet_data *p) {$/;"	f
+is_ip_udp_packet	./lib/utils.c	/^int is_ip_udp_packet(packet_data *p) {$/;"	f
+is_setuid	./src/tcpstat.c	/^int	is_setuid		= 0;	\/* refuse to use fdescs when setuid *\/$/;"	v
+key	./src/stats.c	/^	stkey_t	key;$/;"	m	struct:stat_info	file:
+key	./src/stats.c	/^	u_int	key;$/;"	m	struct:stkey	file:
+len	./include/snoop.h	/^	u_int	len;$/;"	m	struct:snoop_packet_header
+lines_to_show	./src/tcpprof.c	/^int	lines_to_show		= -1;$/;"	v
+link_type	./include/tcpstat.h	/^	u_int			link_type;$/;"	m	struct:packet_data
+linktype	./include/snoop.h	/^	u_int	linktype;	\/* link type *\/$/;"	m	struct:snoop_file_header
+linktype	./lib/process.c	/^	bpf_u_int32	linktype;$/;"	m	struct:hook_and_sinker	file:
+load	./src/tcpstat.c	/^	Double	load;		\/* bps averaged over 1 minute *\/$/;"	m	struct:statistics	file:
+magic	./include/snoop.h	/^	char	magic[8];	\/* is "snoop\\0\\0\\0" *\/$/;"	m	struct:snoop_file_header
+main	./src/catpcap.c	/^int main(int argc, char **argv) {$/;"	f
+main	./src/dump.c	/^int main(int argc, char **argv) {$/;"	f
+main	./src/tcpprof.c	/^int main(int argc, char **argv) {$/;"	f
+main	./src/tcpstat.c	/^int main(int argc, char **argv) {$/;"	f
+max_packetsize	./src/tcpstat.c	/^	int	max_packetsize;	\/* maximum packet size over the interval *\/$/;"	m	struct:statistics	file:
+min_packetsize	./src/tcpstat.c	/^	int	min_packetsize;	\/* mininum packet size over the interval *\/$/;"	m	struct:statistics	file:
+my_alarm	./lib/utils.c	/^void my_alarm(Double seconds) {$/;"	f
+my_basename	./lib/utils.c	/^char *my_basename(char *p) {$/;"	f
+my_charconv	./lib/print_packet.c	/^char *my_charconv(char c) {$/;"	f
+my_get_nr	./src/tcpstat.c	/^char *my_get_nr(char *f) {$/;"	f
+my_get_port	./lib/utils.c	/^char *my_get_port(u_short port, int n_only) {$/;"	f
+my_get_proto	./lib/utils.c	/^char *my_get_proto(u_short proto, int n_only) {$/;"	f
+my_hook	./src/dump.c	/^void my_hook(packet_data *pd, void **args) {$/;"	f
+my_hook	./src/tcpprof.c	/^void my_hook(packet_data *pd, void **args) {$/;"	f
+my_hook	./src/tcpstat.c	/^void my_hook(packet_data *pd, void **args) {$/;"	f
+my_safe_strcpy	./lib/utils.c	/^char *my_safe_strcpy(char **dst, const char *src) {$/;"	f
+next	./lib/tcpseq.c	/^	struct tcpseq_hash	*next;$/;"	m	struct:tcpseq_hash	typeref:struct:tcpseq_hash::tcpseq_hash	file:
+next_entry	./src/stats.c	/^int next_entry(data_base *dbp, stkey_t *key, stat_unit *su) {$/;"	f
+num_packets	./src/stats.c	/^	u_quad_t num_packets;$/;"	m	struct:stat_unit	file:
+numbers_only	./src/tcpprof.c	/^char	numbers_only		= 0;$/;"	v
+octet	./include/ethernet_stub.h	/^	u_char octet[ETHER_ADDR_LEN];$/;"	m	struct:ether_addr
+opened_connections	./lib/tcpseq.c	/^	u_int		opened_connections;	\/* doesn't include full *\/$/;"	m	struct:tcpseq_stats	file:
+outputformat	./src/tcpstat.c	/^char *outputformat = NULL;$/;"	v
+p_number	./src/catpcap.c	/^int p_number			= 1;$/;"	v
+packet_data	./include/tcpstat.h	/^typedef struct packet_data {$/;"	s
+packet_data	./include/tcpstat.h	/^} packet_data;$/;"	t	typeref:struct:packet_data
+packet_len	./include/tcpstat.h	/^	u_int			packet_len;$/;"	m	struct:packet_data
+packet_number	./src/dump.c	/^int	packet_number		= 0;$/;"	v
+packets	./src/tcpstat.c	/^		int		packets;$/;"	m	struct:statistics::__anon6	file:
+parse_show_types	./src/dump.c	/^int parse_show_types(char *in) {$/;"	f
+parse_stats_types	./src/tcpprof.c	/^u_int parse_stats_types(char *in) {$/;"	f
+pcap_major_version	./configure	/^pcap_major_version ();$/;"	f
+pdata	./lib/process.c	/^packet_data	pdata;$/;"	v
+peakbandwidth	./src/tcpstat.c	/^Double	peakbandwidth		= 0.0;$/;"	v
+perror	./include/tcpstat.h	/^#define perror(/;"	d
+port	./lib/tcpseq.c	/^	u_int port;$/;"	m	struct:tcpseq_ha	file:
+ports_to_show	./src/tcpprof.c	/^int	ports_to_show		= IPPORT_RESERVED;$/;"	v
+print_arp_header	./lib/print_packet.c	/^void print_arp_header(struct arphdr *arp) {$/;"	f
+print_icmp6_header	./lib/print_packet.c	/^void print_icmp6_header(struct icmp6_hdr *icmp6, unsigned int len, int wtp) {$/;"	f
+print_icmp_header	./lib/print_packet.c	/^void print_icmp_header(struct icmp *icmp, unsigned int len, int wtp) {$/;"	f
+print_immediately	./src/tcpstat.c	/^int	print_immediately	= 0;	\/* flag set when SIGUSR1 received *\/$/;"	v
+print_ip6_header	./lib/print_packet.c	/^void print_ip6_header(struct ip6_hdr *ip) {$/;"	f
+print_ip_header	./lib/print_packet.c	/^void print_ip_header(struct ip *ip) {$/;"	f
+print_line	./src/stats.c	/^void print_line(char *label, char *suffix, u_quad_t num_p, u_quad_t bytes, Double pcnt) {$/;"	f
+print_packet	./lib/print_packet.c	/^void print_packet(packet_data *p, int what_to_print) {$/;"	f
+print_tcp_header	./lib/print_packet.c	/^void print_tcp_header(struct tcphdr *tcp, unsigned int len, int wtp) {$/;"	f
+print_udp_header	./lib/print_packet.c	/^void print_udp_header(struct udphdr *udp, unsigned int len, int wtp) {$/;"	f
+proc_flags	./lib/process.c	/^	int	proc_flags;$/;"	m	struct:hook_and_sinker	file:
+proc_pcap	./src/catpcap.c	/^void proc_pcap(u_char *user, const struct pcap_pkthdr *h, const u_char *p) {$/;"	f
+process_catch_alarm	./lib/process.c	/^void process_catch_alarm(int a) {$/;"	f
+process_file	./src/catpcap.c	/^void process_file(char *fname, u_int unused) {$/;"	f
+process_file	./src/dump.c	/^void process_file(char *fname, u_int unused) {$/;"	f
+process_file	./src/tcpprof.c	/^void process_file(char *fname, u_int s_types, int flags, Double capture_seconds) {$/;"	f
+process_file	./src/tcpstat.c	/^void process_file(char *fname, u_int unused) {$/;"	f
+process_pcap	./lib/process.c	/^void process_pcap(u_char *user, const struct pcap_pkthdr *h, const u_char *p) {$/;"	f
+raw	./include/tcpstat.h	/^		u_char			raw[PAK_SIZ];$/;"	m	union:packet_data::__anon3
+registered_only	./src/tcpprof.c	/^char	registered_only		= 0;$/;"	v
+relative_seconds	./src/tcpstat.c	/^Double	relative_seconds	= 0.0;$/;"	v
+reset_counters	./src/tcpstat.c	/^void reset_counters(statistics *sp) {$/;"	f
+run	./lib/process.c	/^int		run;$/;"	v
+seconds_left	./lib/process.c	/^Double		seconds_left;$/;"	v
+secs	./include/snoop.h	/^	u_int	secs;$/;"	m	struct:snoop_packet_header
+seq	./lib/tcpseq.c	/^	u_int			seq;$/;"	m	struct:tcpseq_hash	file:
+show_interval	./src/tcpstat.c	/^void show_interval(statistics *s, Double dt) {$/;"	f
+show_results	./src/stats.c	/^void show_results(u_int types) {$/;"	f
+show_totals	./src/stats.c	/^void show_totals(u_int type, u_int count, stat_info *sip, u_quad_t tb) {$/;"	f
+smart_bandwidth	./src/tcpstat.c	/^int	smart_bandwidth		= 0;	\/* when set, use smart bandwidth mode *\/$/;"	v
+smartb_sum	./src/tcpstat.c	/^	Double	smartb_sum;	\/* bytes carried over from the last interval *\/$/;"	m	struct:statistics	file:
+snoop2pcap	./lib/process.c	/^int snoop2pcap(struct snoop_packet_header *sh, struct pcap_pkthdr *ph) {$/;"	f
+snoop_file_header	./include/snoop.h	/^struct snoop_file_header {$/;"	s
+snoop_packet_header	./include/snoop.h	/^struct snoop_packet_header {$/;"	s
+snprintf	./include/tcpstat.h	/^#  define snprintf(/;"	d
+socket	./configure	/^socket ();$/;"	f
+sqrt	./configure	/^sqrt ();$/;"	f
+src	./lib/tcpseq.c	/^	struct in_addr	src;$/;"	m	struct:tcpseq_ha	typeref:struct:tcpseq_ha::in_addr	file:
+src_dest_split	./src/tcpprof.c	/^char	src_dest_split		= 0;$/;"	v
+stat_info	./src/stats.c	/^typedef struct stat_info {$/;"	s	file:
+stat_info	./src/stats.c	/^} stat_info;$/;"	t	typeref:struct:stat_info	file:
+stat_root	./include/tcpprof.h	/^typedef struct stat_root {$/;"	s
+stat_root	./include/tcpprof.h	/^} stat_root;$/;"	t	typeref:struct:stat_root
+stat_unit	./src/stats.c	/^typedef struct stat_unit {$/;"	s	file:
+stat_unit	./src/stats.c	/^} stat_unit;$/;"	t	typeref:struct:stat_unit	file:
+statistics	./src/tcpstat.c	/^typedef struct statistics {$/;"	s	file:
+statistics	./src/tcpstat.c	/^} statistics;$/;"	t	typeref:struct:statistics	file:
+stats_closedb	./src/stats.c	/^int stats_closedb() {$/;"	f
+stats_initdb	./src/stats.c	/^int stats_initdb(u_int s_types) {$/;"	f
+stats_insert	./src/stats.c	/^void stats_insert(packet_data *pd, u_int types) {$/;"	f
+stkey	./src/stats.c	/^typedef struct stkey {$/;"	s	file:
+stkey_t	./src/stats.c	/^} stkey_t;$/;"	t	typeref:struct:stkey	file:
+str	./lib/utils.c	/^char str[BUF_SIZ];$/;"	v
+sum	./src/tcpstat.c	/^	Double	sum;		\/* sum of of the packet sizes *\/$/;"	m	struct:statistics	file:
+sum2	./src/tcpstat.c	/^	Double	sum2;		\/* sum of the squares of the packet sizes *\/$/;"	m	struct:statistics	file:
+tc	./src/stats.c	/^int		tc;$/;"	v
+tcp	./src/tcpstat.c	/^		int		tcp;$/;"	m	struct:statistics::__anon6	file:
+tcphdr	./include/tcpstat.h	/^		struct tcphdr	tcphdr;$/;"	m	union:ip6_packet::__anon2	typeref:struct:ip6_packet::__anon2::tcphdr
+tcphdr	./include/tcpstat.h	/^		struct tcphdr	tcphdr;$/;"	m	union:ip_packet::__anon1	typeref:struct:ip_packet::__anon1::tcphdr
+tcpseq_addtostats	./lib/tcpseq.c	/^int tcpseq_addtostats(packet_data *pd) {$/;"	f
+tcpseq_ha	./lib/tcpseq.c	/^struct tcpseq_ha {$/;"	s	file:
+tcpseq_hash	./lib/tcpseq.c	/^struct tcpseq_hash {$/;"	s	file:
+tcpseq_stats	./lib/tcpseq.c	/^struct tcpseq_stats {$/;"	s	file:
+timestamp	./include/tcpstat.h	/^	struct timeval		timestamp;$/;"	m	struct:packet_data	typeref:struct:packet_data::timeval
+tlen	./include/snoop.h	/^	u_int	tlen;$/;"	m	struct:snoop_packet_header
+total_bytes	./src/tcpstat.c	/^		Double		total_bytes;$/;"	m	struct:statistics::__anon5	file:
+total_time	./src/tcpstat.c	/^		Double		total_time;$/;"	m	struct:statistics::__anon5	file:
+total_time_over_bps	./src/tcpstat.c	/^		Double		total_time_over_bps;$/;"	m	struct:statistics::__anon5	file:
+ts_bigbang	./src/tcpstat.c	/^		Double		ts_bigbang;$/;"	m	struct:statistics::__anon5	file:
+ts_interval_begin	./src/tcpstat.c	/^	Double	ts_interval_begin; \/* timestamp of the first packet in the interval *\/$/;"	m	struct:statistics	file:
+ts_now	./src/tcpstat.c	/^	Double	ts_now;		\/* timestamp of last packet received *\/$/;"	m	struct:statistics	file:
+type	./include/tcpprof.h	/^	u_int		type;$/;"	m	struct:stat_root
+type	./src/stats.c	/^	u_int	type;$/;"	m	struct:data_base	file:
+type_str	./src/stats.c	/^const char *type_str[] = { "Total", "Link", "IP", "Port", "Host", "Network" };$/;"	v
+udp	./src/tcpstat.c	/^		int		udp;$/;"	m	struct:statistics::__anon6	file:
+udphdr	./include/tcpstat.h	/^		struct udphdr	udphdr;$/;"	m	union:ip6_packet::__anon2	typeref:struct:ip6_packet::__anon2::udphdr
+udphdr	./include/tcpstat.h	/^		struct udphdr	udphdr;$/;"	m	union:ip_packet::__anon1	typeref:struct:ip_packet::__anon1::udphdr
+unit	./src/stats.c	/^	stat_unit unit;$/;"	m	struct:stat_info	file:
+unused3	./include/snoop.h	/^	u_int	unused3;$/;"	m	struct:snoop_packet_header
+usecs	./include/snoop.h	/^	u_int	usecs;$/;"	m	struct:snoop_packet_header
+version	./include/snoop.h	/^	u_int	version;	\/* current version is "2" *\/$/;"	m	struct:snoop_file_header
+what_to_show	./src/dump.c	/^int	what_to_show		= 0;$/;"	v
+wr_bytes	./src/tcpstat.c	/^char *wr_bytes(Double b) {$/;"	f

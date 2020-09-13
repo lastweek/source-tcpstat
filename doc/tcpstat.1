@@ -1,0 +1,360 @@
+.\" Copyright (c) 2000 Paul Herman
+.\" All rights reserved.
+.\"
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice, this list of conditions and the following disclaimer.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice, this list of conditions and the following disclaimer in the
+.\"    documentation and/or other materials provided with the distribution.
+.\"
+.\" THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+.\" ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+.\" ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+.\" FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+.\" DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+.\" OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+.\" HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+.\" LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+.\" OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+.\" SUCH DAMAGE.
+.\"
+.\" $Id: tcpstat.1,v 1.33 2003/01/24 19:52:44 pherman Exp $
+.\" ---
+.\" Paul says: man-o-man I just went through 2 whole bags of doritos(tm)
+.\" trying to write this manpage by hand.  There's gotta be a better
+.\" way to do this . . .
+.\"
+.Dd April 29, 2000
+.Dt TCPSTAT 1
+.Os
+.Sh NAME
+.Nm tcpstat
+.Nd report network interface statistics
+.Sh SYNOPSIS
+.Nm tcpstat
+.Op Fl ?haeFlp
+.Op Fl B Ar bps
+.Op Fl b Ar bps
+.Op Fl f Ar filter expr
+.Op Fl i Ar interface
+.Op Fl o Ar output
+.Op Fl R Ar seconds
+.Op Fl r Ar filename
+.Op Fl s Ar seconds
+.Op Ar interval
+.Sh DESCRIPTION
+.Nm
+reports certain network interface statistics much like
+.Xr vmstat 8
+does for system statistics.  Statistics include bandwidth being used,
+number of packets, average packet size, and much more.
+.Pp
+Network information is collected either by reading data from
+.Ar filename ,
+or by directly monitoring the network interface
+.Ar interface .
+The default action for
+.Nm
+is to automatically search for an appropriate
+interface, and to show current statistics on it.
+.Pp
+.Ar interval 
+is the sample interval, in seconds, in which the statistics are based upon
+and when in default mode, how often the display is updated. If -1 is
+given, then the interval is taken to be the entire length of the sample.  
+Default is 5 seconds.
+.Pp
+When reading data from
+.Ar filename ,
+.Nm
+will exit immediately after the entire file has been processed.  When
+collecting data from
+.Ar interface ,
+.Nm
+will keep running unless the
+.Fl s
+option had been specified.
+.Pp
+.Sh OPTIONS
+The options are as follows:
+.Bl -tag -width Fl
+.It Fl a
+Accounting mode.  Displays the estimated number of bytes per second,
+minute, hour, day, and month.
+.It Fl b Ar bps
+Bandwidth mode.
+Displays the total number of seconds the
+data-throughput exceeded
+.Ar bps ,
+and the percentage of total time this was,
+as if the interface were limited to
+.Ar bps
+bits per second.  See the
+.Sx NOTES
+section below to see how the
+.Ar interval
+affects bandwidth calculation.
+.It Fl B Ar bps
+"Dumb" bandwidth mode.  Displays the total number of seconds the
+data-throughput exceeded
+.Ar bps ,
+and the percentage of total time this was.  See the
+.Sx NOTES
+section below to see difference between "dumb" and normal
+bandwidth modes.
+.It Fl e
+Suppresses the display of empty intervals.
+.It Fl F
+Flush all output streams after printing each interval.  Sometimes useful
+when redirecting output into a file, or piping tcpstat into another
+program like
+.Xr grep 1 .
+.It Fl f Ar filter expr
+Filter the packets according the rules given by
+.Ar filter expr .
+For the syntax of these rules, see
+.Xr tcpdump 1 .
+The argument must be quoted if it contains spaces in order to separate it
+from other options.
+.It Fl h , Fl ?
+Display version and a brief help message.
+.It Fl i Ar interface
+Do a live capture (rather than read from a file) on the interface
+.Ar interface
+given on the command line.  If
+.Ar interface
+is "auto" then
+.Nm
+tries to find an appropriate one by itself.
+.It Fl l
+Include the size of the link-layer header when calculating statistics.
+(Ethernet only, right now.  Usually 14 bytes per packet.)
+.It Fl p
+Set the interface into non-promiscuous mode (promiscuous
+is the default) when doing live captures.
+.It Fl o Ar format
+Set the output format when displaying statistics.  See the
+.Sx OUTPUT FORMAT
+section below for a description of the syntax.
+.It Fl R Ar seconds
+Show the timestamp relative to
+.Ar seconds .
+Avoid this option, because it will most likely go away in future versions.
+.It Fl r Ar filename
+Read all data from
+.Ar filename ,
+which may be a regular file, a named pipe or "-" to read it's data from
+standard input. Acceptable file formats include pcap
+.Xr (tcpdump 1
+files) and "snoop" format files.
+.Ar filename
+is usually a file created by the
+.Xr tcpdump 1
+command using the "-w" option.
+.It Fl s Ar seconds
+When monitoring an interface, 
+.Nm
+runs for only 
+.Ar seconds 
+seconds, and then quits.  When reading from a data file,
+.Nm
+prints statistics for
+.Ar seconds
+seconds relative to the first packet seen.
+.El
+.Sh OUTPUT FORMAT
+The
+.Ar output
+string is any quoted string, and
+.Nm
+will write this string to the stdout.  In addition,
+.Nm
+will substitute certain values for substrings which begin with a "%", as
+well as most standard
+.Xr printf 3
+"\\" escape characters. Here is a list of all substitution strings:
+.Bl -tag -width %%%%
+.It % Ns A
+the number of ARP packets
+.It % Ns a
+the average packet size in bytes
+.It % Ns B
+the number of bytes per second
+.It % Ns b
+the number of bits per second
+.It % Ns C
+the number of ICMP and ICMPv6 packets
+.It % Ns d
+the standard deviation of the size of each packet in bytes
+.It % Ns I
+the number of IPv4 packets
+.It % Ns l
+the network "load" over the last minute, similar to
+.Xr uptime 1
+.It % Ns M
+the maximum packet size in bytes
+.It % Ns m
+the minimum packet size in bytes
+.It % Ns N
+the number of bytes
+.It % Ns n
+the number of packets
+.It % Ns p
+the number of packets per second
+.It % Ns R
+same as %S, but relative to the first packet seen
+.It % Ns r
+same as %s, but relative to the first packet seen
+.It % Ns S
+the timestamp for the interval in seconds after the "UNIX epoch"
+.It % Ns s
+the timestamp for the interval in seconds.microseconds after the "UNIX epoch"
+.It % Ns T
+the number of TCP packets
+.It % Ns U
+the number of UDP packets
+.It % Ns V
+the number of IPv6 packets
+.It % Ns Ar number
+switch the output to the file descriptor
+.Ar number
+at this point in the string.  All output for each interval before this
+parameter is by default the standard output (file descriptor 1).  Useful
+when redirecting the output into more than one file (or fifo) for separate
+statistics.  Be sure you know where they are going.  Writing to "dangling"
+file descriptors (without directing them to a specific destination) may
+produce unexpected results.
+.It % Ns %
+the "%" character
+.El
+.Pp
+The default
+.Ar format
+string for
+.Nm
+is:
+.Pp
+"Time:%S\\tn=%n\\tavg=%a\\tstddev=%d\\tbps=%b\en"
+.Pp
+which will produce an output which would look similar to:
+.Bd -literal -offset left
+Time:940948785	n=107	avg=251.81	stddev=422.45	bps=43110.40
+Time:940948790	n=99	avg=400.21	stddev=539.39	bps=63393.60
+Time:940948795	n=43	avg=257.16	stddev=352.83	bps=17692.80
+.Ed
+.Pp
+It is worth noting for example, that many of the protocol filters (%T, %U,
+etc.) may be seen as being redundant because protocols can be filtered
+using
+.Fl f
+(see
+.Sx OPTIONS
+above)
+.Sh SIGNALS
+Upon receiving a SIGINT,
+.Nm
+will print any remaining statistics, and then exit.
+Upon receiving a SIGUSR1 when printing intervals,
+.Nm
+will print the current statistics immediately.  This can be useful
+when using an interval length of "-1" to print statistics on demand.
+.Sh FILES
+.Bl -tag -width /dev/bpfXXX -compact
+.It Pa /dev/bpf Ns Sy n
+the packet filter device
+.El
+.Sh EXAMPLES
+.Dl tcpstat -i fxp0
+.Pp
+Displays the default statistics every 5 seconds of all traffic currently
+passing through the fxp0 network interface.
+.Pp
+.Dl tcpstat -r file.dump
+.Pp
+Displays the default statistics every 5 seconds from the
+.Xr tcpdump 1
+generated file "file.dump".
+.Pp
+.Dl "tcpstat -f 'port (smtp or http)' -o '%S %b\en' -r file.dump" 2.3
+.Pp
+Displays every 2.3 seconds the timestamp together with smtp and http
+traffic throughput of the data from "file.dump", in a format which would
+be suitable for
+.Xr gnuplot 1 .
+.Pp
+.Dl tcpstat -b 28800 -r file.dump 0.5
+.Pp
+Displays what percentage of the traffic in file.dump exceeded the speed of
+my modem (28800 bits per second.)
+.Pp
+.Sh SEE ALSO
+.Xr tcpdump 1 ,
+.Xr pcap 3 ,
+.Xr bpf 4 ,
+.Xr printf 3
+.Re
+.Sh NOTES
+.Ss Interval size affects bandwidth
+Due to the nature of how bandwidth is actually measured (from discrete
+samples of data), the bandwidth numbers displayed will vary according to the
+.Ar interval
+variable.  Generally speaking, if you often have rapid bursts of packet data,
+the bandwidth reported will not reflect this when
+.Ar interval
+is sufficiently large.  This results in an "averaging" effect, which may or
+may not be desired.  On the other hand, if
+.Ar interval
+is too small (say < 0.01), this results in unrealisticaly large
+bandwidths for very short amounts of time.
+.Pp
+The reason for the latter is that most network interfaces do not hand over
+packets bit by bit, but rather packet by packet.  Thus, each packet is
+reported as being tranfered "instantaneously", resulting in "infinite" (or
+rather indeterminable) bandwidth.  Thus, when counting single bits on the
+wire, there really is no such thing as "bandwidth" because they aren't
+really moving from the network stack's point of view (cf. Zeno's Paradox.)
+.Pp
+A possible solution is to internaly spline the packet sizes together and
+report the bandwidth as the scalar integral over the given interval, but
+this has yet to be implimented, and to be honest, would be the proverbial
+cruise missle to destroy an ant hill.
+.Pp
+That being said (whew!), a "good value" for
+.Ar interval
+is usualy somewhere between 0.5 and 2.
+.Ss Difference between normal and 'dumb' bandwidth modes.
+In normal bandwidth mode, when an interval exceeds the given bandwidth,
+the extra bytes are "moved" into the next interval.  This has the effect
+of trying to imagine how overloaded an interface would be if the interface
+had a smaller bandwidth, yet same amount of data tried to get through.
+.Pp
+In "dumb" bandwidth mode, each interval which exceeds the given bandwidth
+is simply counted.  Nothin' else.
+.Sh HISTORY
+.Nm
+was first written in Winter 1998 using
+.Fx 3.0 ,
+and then finaly retrofited for Linux in Spring 2000.
+.Sh AUTHORS
+.An Paul Herman Aq pherman@frenchfries.net
+.br
+Cologne, Germany.
+.Pp
+Please send all bug reports to this address.
+.Sh BUGS
+Due to a bug in libpcap, tcpstat will hang indefinately under Linux 
+when no packets arrive.  This is because the timeout in pcap_open_live()
+is ignored under Linux when the interface is idle, which causes pcap_dispatch()
+to never return.
+.Pp
+Not tested with link types other than Ethernet, PPP, and "None" types.  
+.Pp
+There may be problems reading non-IPv4 packets across platforms when
+reading null type link layers.  This is due to a lack of a standardized
+packet type descriptor in libpcap for this link type.
+.Pp
+Snoop file formats cannot be read from stdin or named pipes.
